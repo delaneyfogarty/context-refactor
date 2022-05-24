@@ -1,37 +1,9 @@
 import './App.css';
-import initialCards from './cards-data';
 import Player from './Player';
 import CardList from './CardList';
-import { useState } from 'react';
 import ExecutePassButton from './ExecutePassButton';
 
 function App() {
-  function findCardIndex(value, suit, cards) {
-    return cards.findIndex((card) => card.value === value && card.suit === suit);
-  }
-
-  function passCard(card) {
-    const playerHands = [playerOneHand, playerTwoHand, playerThreeHand];
-    const playerHandSetFunctions = [setPlayerOneHand, setPlayerTwoHand, setPlayerThreeHand];
-
-    // arrays start at zero, but our players start at 1 :shrug:
-    const toHand = playerHands[to - 1] || deck;
-    const fromHand = playerHands[from - 1] || deck;
-
-    const toSetFunction = playerHandSetFunctions[to - 1] || setDeck;
-    const fromSetFunction = playerHandSetFunctions[from - 1] || setDeck;
-
-    const cardToMoveIndex = findCardIndex(card.value, card.suit, fromHand);
-    const [cardToMove] = fromHand.splice(cardToMoveIndex, 1);
-
-    toHand.push(cardToMove);
-
-    toSetFunction([...toHand]);
-    fromSetFunction([...fromHand]);
-
-    setSelectedCard(null);
-  }
-
   return (
     <div className="App">
       <section>
