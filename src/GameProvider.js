@@ -3,7 +3,7 @@ import cards from './cards-data';
 
 const GameContext = createContext();
 
-export default function GameProvider() {
+export default function GameProvider({ children }) {
   const [deck, setDeck] = useState(cards);
   const [playerOneHand, setPlayerOneHand] = useState([]);
   const [selectedCard, setSelectedCard] = useState();
