@@ -23,7 +23,10 @@ export default function Card({ card, cardLocation }) {
     selectedCard.suit === card.suit;
 
   return (
-    <div className={`${thisIsTheSelectedCard ? 'selected' : ''} card`} onClick={handleCardClick}>
+    <div
+      className={`${thisIsTheSelectedCard ? 'selected' : ''} card`}
+      onClick={cardLocation !== 'button' ? handleCardClick : () => {}}
+    >
       <div>{suitMap[card.suit]}</div>
       <div>{card.value}</div>
     </div>
